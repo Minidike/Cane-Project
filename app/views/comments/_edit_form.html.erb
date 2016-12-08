@@ -1,0 +1,12 @@
+<%= form_for ([@fact, @comment]), :html => {:class => "ui form attached fluid segment"} do |f| %>
+
+  <div class="field">
+    <%= f.label :content %>
+    <%= f.text_field :content %>
+  </div>
+  
+  <div class="actions">
+    <%= f.submit "Send comment", class: "ui blue submit button" %>
+  </div>
+  
+<% end %>

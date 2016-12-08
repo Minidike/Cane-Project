@@ -1,0 +1,28 @@
+<div class="comment">
+  <a class="avatar">
+    <%= image_tag comment.user.avatar.url(:thumb) %>
+  </a>
+  <div class="content">
+    <a class="author"><%= comment.user.name %></a>
+    <div class="metadata">
+      <div class="date"><%= comment.created_at.strftime("%b %d %Y, %H:%M") %></div>
+      <div class="rating">
+        <i class="star icon"></i>
+        5 Likes
+      </div>
+    </div>
+    <div class="text">
+      <%= comment.content %>
+    </div>
+    <% if current_user %>
+      <div class="actions">
+        <% if can? :update, comment %>
+          <%= link_to "Edit", edit_fact_comment_path(comment.fact, comment) %>
+        <% end %>
+        <% if can? :destroy, comment %>
+          <%= link_to "Delete", fact_comment_path(comment.fact, comment), method: :delete, data: { confirm: "Are you sure?" } %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>

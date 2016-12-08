@@ -1,0 +1,58 @@
+<div class="ui container">
+  <div class="ui relaxed divided items">
+    <div class="item">
+      <div class="ui big image">
+        <%= image_tag @fact.image.url(:large) %>
+      </div>
+      <div class="content">
+        <a class="header"><%= @fact.title %></a>
+        <div class="meta">
+          <a><%= @fact.created_at.strftime("%b %d %Y, %H:%M") %></a>
+        </div>
+        <div class="description">
+          <%= @fact.description %>
+        </div>
+        <div class="extra">
+          <%= image_tag @fact.user.avatar.url(:thumb), class: "ui circular avatar image" %> <%= @fact.user.name %>
+        </div>
+
+        <% if current_user %>
+          
+          <%= link_to like_fact_path(@fact), method: :put do %>
+            <div class="ui labeled button" tabindex="0">
+              <div class="ui blue button">
+                <i class="heart icon"></i> Chido
+              </div>
+              <div class="ui basic blue left pointing label">
+                <%= @fact.get_upvotes.size %>
+              </div>
+            </div>
+          <% end %>
+          
+          <% if can? :update, @fact %>
+            <%= link_to "Editar", edit_fact_path(@fact), class: "ui teal small button" %>
+          <% end %>
+          
+          <% if can? :destroy, @fact %>
+            <%= link_to "Eliminar", @fact , method: :delete, data: {confirm: "Are you sure?"}, class: "ui red small button" %>
+          <% end %>
+
+        <% end %>
+
+      </div>
+    </div>
+  </div>
+  
+  <h3>Comentarios</h3>
+  <div class="ui comments">
+    <%= render @fact.comments %>
+  </div>
+  
+  <% if current_user %>
+    <div class="form">
+      <%= render 'comments/form' %>
+    </div>
+  <% end %>
+
+ 
+</div>

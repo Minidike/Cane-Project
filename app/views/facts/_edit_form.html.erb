@@ -1,0 +1,24 @@
+<div class="ui attached message">
+  <div class="header">
+    Editing "<%= @fact.title %>"
+  </div>
+  <p>Fill out the form in order to update your fact.</p>
+</div>
+
+<%= form_for @fact, :html => {:class => "ui form attached fluid segment"} do |f| %>
+
+  <div class="field">
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :description %>
+    <%= f.text_area :description %>
+  </div>
+  
+  <div class="actions">
+    <%= f.submit "Submit fact", class: "ui blue submit button" %>
+  </div>
+
+<% end %>

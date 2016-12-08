@@ -1,0 +1,11 @@
+<%= form_for ([@fact, @fact.comments.build]), :html => {:class => "ui form attached fluid segment"} do |f| %>
+
+  <div class="field">
+    <%= f.text_field :content, style: "min-height:100px;" %>
+  </div>
+  
+  <div class="actions">
+    <%= f.submit "Comment", class: "ui blue submit button" %>
+  </div>
+  
+<% end %>

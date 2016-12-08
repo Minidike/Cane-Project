@@ -1,0 +1,17 @@
+<div class="ui stackable container menu">
+  <div class="item">
+    <img src="http://semantic-ui.com/examples/assets/images/logo.png">
+  </div>
+  <%= link_to "Posts", facts_path, class: "item" %>
+  <div class="menu right">
+    <% if current_user %>
+      <%= link_to "Mensajes", edit_user_registration_path, class: "item" %>
+      <%= link_to current_user.name, edit_user_registration_path, class: "item" %>
+      <%= link_to "Cerrar Sesion", destroy_user_session_path, method: :delete, class: "item" %>
+    <% else %>
+      <%= link_to "Iniciar Sesion", new_user_session_path, class: "item" %>
+      <%= link_to "Registrarse", new_user_registration_path, class: "item" %>
+    <% end %>
+  </div>
+
+</div>

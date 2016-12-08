@@ -1,0 +1,30 @@
+<% if notice %>
+  <div class="ui container">
+    <div class="ui segment">
+      <div class="ui icon message">
+        <i class="info icon"></i>
+        <div class="content">
+          <div class="header">
+            Notice!
+          </div>
+          <p><%= notice %></p>
+        </div>
+      </div>
+    </div>
+  </div>
+<% elsif alert %>
+  <div class="ui container">
+    <div class="ui segment">
+      <div class="ui icon message">
+        <i class="warning icon"></i>
+        <div class="content">
+          <div class="header">
+            Alert!
+          </div>
+          <p><%= alert %></p>
+        </div>
+      </div>
+    </div>
+  </div>    
+<% end %>
+    

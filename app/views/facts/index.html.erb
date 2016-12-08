@@ -1,0 +1,27 @@
+<div class="ui container">
+  <h1>Post Recientes</h1>
+    <% if current_user %>
+      <%= link_to "Nuevo Post", new_fact_path, class: "ui green button" %>
+    <% end %>
+  <div class="ui relaxed divided items">
+    <% @facts.each do |fact| %>
+      <div class="item">
+        <div class="ui small image">
+          <%= image_tag fact.image.url(:large) %>
+        </div>
+        <div class="content">
+          <%= link_to fact.title, fact, class: "header" %>
+          <div class="meta">
+            <a><%= fact.created_at.strftime("%b %d %Y, %H:%M") %></a>
+          </div>
+          <div class="description">
+            <%= fact.description %>
+          </div>
+          <div class="extra">
+            <%= image_tag fact.user.avatar.url(:thumb), class: "ui circular avatar image" %> <%= fact.user.name %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
